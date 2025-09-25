@@ -20,10 +20,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.pam_1.ui.theme.Poppins
 
 @Composable
 fun ProfileUser(
+    navController: NavController,
     firstName: String,
     lastName: String,
     username: String,
@@ -91,16 +94,7 @@ fun ProfileUser(
                 readOnly = true,
                 modifier = Modifier.width(166.dp),
                 shape = RoundedCornerShape(10.dp),
-                colors = TextFieldDefaults.colors(
-//                    focusedContainerColor = Color.Transparent,
-//                    unfocusedContainerColor = Color.Transparent,
-//                    disabledContainerColor = Color.Transparent,
 
-                    focusedTextColor = Color((0xFFB5651D)),
-                    unfocusedTextColor = Color.Black,
-                    focusedLabelColor = Color.Transparent,
-                    unfocusedLabelColor = Color((0xFFB5651D))
-                )
             )
             Spacer(modifier = Modifier.width(10.dp))
 
@@ -115,17 +109,7 @@ fun ProfileUser(
                 readOnly = true,
                 modifier = Modifier.width(166.dp),
                 shape = RoundedCornerShape(10.dp),
-                colors = TextFieldDefaults.colors(
-//                    focusedContainerColor = Color.Transparent,
-//                    unfocusedContainerColor = Color.Transparent,
-//                    disabledContainerColor = Color.Transparent,
 
-                    focusedTextColor = Color((0xFFB5651D)),
-                    unfocusedTextColor = Color.Black,
-                    focusedLabelColor = Color.Transparent,
-                    unfocusedLabelColor = Color((0xFFB5651D))
-
-                )
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -143,25 +127,43 @@ fun ProfileUser(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(10.dp),
-            colors = TextFieldDefaults.colors(
-//                    focusedContainerColor = Color.Transparent,
-//                    unfocusedContainerColor = Color.Transparent,
-//                    disabledContainerColor = Color.Transparent,
 
-                focusedTextColor = Color((0xFFB5651D)),
-                unfocusedTextColor = Color.Black,
-                focusedLabelColor = Color.Transparent,
-                unfocusedLabelColor = Color((0xFFB5651D))
-            )
         )
 
-        Spacer(modifier = Modifier.height(425.dp))
+        Spacer(modifier = Modifier.height(8.dp))
+
+
+        OutlinedTextField(
+            value = "Halo, saya Sulthon. Mahasiswa Sistem Informasi yang tertarik di bidang data science dan mobile development. Saya suka belajar hal-hal baru, ngoprek teknologi, dan juga senang berbagi pengetahuan dengan teman-teman.",
+            onValueChange = {},
+            label = {
+                Text(
+                    "Bio",
+                    fontSize = 12.sp,
+                    fontFamily = Poppins,
+                    fontWeight = FontWeight.Medium
+                )
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(120.dp), // agar kotaknya lebih tinggi
+            shape = RoundedCornerShape(10.dp),
+            readOnly = false, // bisa diisi
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            maxLines = 5 // bio bisa lebih panjang
+        )
+
+
+        Spacer(modifier = Modifier.height(250.dp))
 
         // Tombol Logout
         Button(
             onClick = {
                 Toast.makeText(context, "Logout berhasil", Toast.LENGTH_SHORT).show()
                 onLogout()
+                navController.navigate(
+                    "login"
+                )
             },
             colors = ButtonDefaults.buttonColors(Color(0xFFB5651D)),
             shape = RoundedCornerShape(10.dp),
@@ -181,6 +183,7 @@ fun ProfileUser(
 @Composable
 fun PreviewProfilUser() {
     ProfileUser(
+        navController = rememberNavController(),
         firstName = "Ali",
         lastName = "Sulthon",
         username = "Lusthon",

@@ -6,9 +6,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.pam_1.ui.LoginScreen
-import com.example.pam_1.ui.RegisterScreen
+import com.example.pam_1.activity.LoginScreen
+import com.example.pam_1.activity.RegisterScreen
 import com.example.pam_1.activity.ProfileUser
+import com.example.pam_1.activity.ResetPassword1Screen
+import com.example.pam_1.activity.ResetPassword2Screen
 
 @Composable
 fun AppNavigation() {
@@ -23,20 +25,7 @@ fun AppNavigation() {
 
         // LOGIN (no-args) → dipakai dari "Already account? Log in"
         composable("login") {
-            LoginScreen(
-                navController = navController,
-                onLoginClick = { inputUsername, _ ->
-                    // Tanpa data register: boleh langsung ke profile dengan placeholder nama
-                    val firstName = "User"
-                    val lastName = "Guest"
-                    val email = "${inputUsername}@gmail.com"
-                    navController.navigate("profile/$firstName/$lastName/$inputUsername/$email")
-                },
-                onSignUpClick = {
-                    navController.navigate("register")
-                },
-                onForgotPasswordClick = { }
-            )
+            LoginScreen(navController = navController)
         }
 
         // LOGIN (with args) → dipakai setelah Register, bisa validasi kredensial
@@ -56,18 +45,25 @@ fun AppNavigation() {
             val email = backStackEntry.arguments?.getString("email") ?: ""
             val password = backStackEntry.arguments?.getString("password") ?: ""
 
-            LoginScreen(
+            LoginScreen(navController = navController)
+        }
+
+        composable("resetPassword1") {
+            ResetPassword1Screen(navController = navController)
+        }
+
+        composable("resetPassword2") {
+            ResetPassword2Screen(navController = navController)
+        }
+
+        composable("profile") {
+            ProfileUser(
                 navController = navController,
-                onLoginClick = { inputUsername, inputPassword ->
-                    // Validasi sederhana sesuai data dari Register
-                    if (inputUsername == username && inputPassword == password) {
-                        navController.navigate("profile/$firstName/$lastName/$username/$email")
-                    }
-                },
-                onSignUpClick = {
-                    navController.navigate("register")
-                },
-                onForgotPasswordClick = { }
+                firstName = "Ali",
+                lastName = "Sulthon",
+                username = "Lusthon",
+                email = "Sul@gmail.com",
+                onLogout = {}
             )
         }
 
@@ -87,6 +83,7 @@ fun AppNavigation() {
             val email = backStackEntry.arguments?.getString("email") ?: ""
 
             ProfileUser(
+                navController = navController,
                 firstName = firstName,
                 lastName = lastName,
                 username = username,
