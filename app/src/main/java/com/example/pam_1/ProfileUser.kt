@@ -1,4 +1,4 @@
-package com.example.pam_assignment_1
+package com.example.pam_1
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -178,4 +178,16 @@ fun ProfilUser(
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewProfilUser() {
+    ProfilUser(
+        firstName = "Ali",
+        lastName = "Sulthon",
+        username = "Lusthon",
+        email = "Sul@gmail.com",
+        onLogout = {}
+    )
 }
