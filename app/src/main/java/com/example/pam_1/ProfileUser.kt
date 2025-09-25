@@ -1,7 +1,11 @@
 package com.example.pam_assignment_1
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
@@ -38,13 +42,33 @@ fun ProfilUser(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Icon profil
-        Icon(
-            imageVector = Icons.Default.Person,
-            contentDescription = "Profile Icon",
-            modifier = Modifier.size(100.dp),
-            tint = MaterialTheme.colorScheme.primary
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(
+                    color = MaterialTheme.colorScheme.primary, // Warna latar belakang lingkaran
+                    shape = CircleShape // Bentuk lingkaran
+                ),
+            contentAlignment = Alignment.Center // Posisikan ikon di tengah Box
+        ) {
+            // 2. Letakkan Icon di dalam Box
+            Icon(
+                imageVector = Icons.Default.Person,
+                contentDescription = "Profile Icon",
+                // Buat ikon sedikit lebih kecil dari lingkaran agar terlihat bagus
+                modifier = Modifier.size(60.dp),
+                // Gunakan warna onPrimary agar kontras dengan latar belakang primary
+                tint = MaterialTheme.colorScheme.onPrimary
+            )
+        }
+        Text(
+            text = username,
+            fontSize = 24.sp,
+            fontFamily = Poppins,
+            fontWeight = FontWeight.SemiBold
+
         )
-        Text(text = username)
+
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -65,9 +89,21 @@ fun ProfilUser(
                     fontSize = 12.sp,
                     fontFamily = Poppins,
                     fontWeight = FontWeight.Medium)
+
                         },
                 readOnly = true,
-                modifier = Modifier.width(166.dp)
+                modifier = Modifier.width(166.dp),
+                shape = RoundedCornerShape(10.dp),
+                colors = TextFieldDefaults.colors(
+//                    focusedContainerColor = Color.Transparent,
+//                    unfocusedContainerColor = Color.Transparent,
+//                    disabledContainerColor = Color.Transparent,
+
+                    focusedTextColor = Color((0xFFB5651D)),
+                    unfocusedTextColor = Color.Black,
+                    focusedLabelColor = Color.Transparent,
+                    unfocusedLabelColor = Color((0xFFB5651D))
+                )
             )
             Spacer(modifier = Modifier.width(10.dp))
 
@@ -80,7 +116,19 @@ fun ProfilUser(
                     fontWeight = FontWeight.Medium)
                         },
                 readOnly = true,
-                modifier = Modifier.width(166.dp)
+                modifier = Modifier.width(166.dp),
+                shape = RoundedCornerShape(10.dp),
+                colors = TextFieldDefaults.colors(
+//                    focusedContainerColor = Color.Transparent,
+//                    unfocusedContainerColor = Color.Transparent,
+//                    disabledContainerColor = Color.Transparent,
+
+                    focusedTextColor = Color((0xFFB5651D)),
+                    unfocusedTextColor = Color.Black,
+                    focusedLabelColor = Color.Transparent,
+                    unfocusedLabelColor = Color((0xFFB5651D))
+
+                )
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -96,10 +144,21 @@ fun ProfilUser(
                     },
             readOnly = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(10.dp),
+            colors = TextFieldDefaults.colors(
+//                    focusedContainerColor = Color.Transparent,
+//                    unfocusedContainerColor = Color.Transparent,
+//                    disabledContainerColor = Color.Transparent,
+
+                focusedTextColor = Color((0xFFB5651D)),
+                unfocusedTextColor = Color.Black,
+                focusedLabelColor = Color.Transparent,
+                unfocusedLabelColor = Color((0xFFB5651D))
+            )
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(425.dp))
 
         // Tombol Logout
         Button(
@@ -107,13 +166,16 @@ fun ProfilUser(
                 Toast.makeText(context, "Logout berhasil", Toast.LENGTH_SHORT).show()
                 onLogout()
             },
-            colors = ButtonDefaults.buttonColors(Color(0xFFB5651D))
+            colors = ButtonDefaults.buttonColors(Color(0xFFB5651D)),
+            shape = RoundedCornerShape(10.dp),
+            contentPadding = PaddingValues(50.dp, 12.dp)
         ) {
-            Text("Logout", color = MaterialTheme.colorScheme.onError,
-                    fontSize = 20.sp,
-                    fontFamily = Poppins,
-                    fontWeight = FontWeight.Medium
-                )
+            Text("Logout",
+                color = Color.White,
+                fontSize = 20.sp,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Medium
+            )
         }
     }
 }
