@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.pam_assignment_1.Nav.AppNavigation
-import com.example.pam_assignment_1.ui.LoginScreen
+//import com.example.pam_assignment_1.ui.LoginScreen
 import com.example.pam_assignment_1.ui.RegisterScreen
 
 class MainActivity : ComponentActivity() {
