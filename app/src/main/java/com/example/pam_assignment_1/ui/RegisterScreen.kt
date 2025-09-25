@@ -3,8 +3,10 @@ package com.example.pam_assignment_1.ui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.*
+import androidx.compose.material3.AlertDialogDefaults.containerColor
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,7 +36,7 @@ fun RegisterScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 40.dp,vertical = 24.dp)
+            .padding(horizontal = 40.dp, vertical = 24.dp)
     ) {
         Text(
             text = "Sign Up",
@@ -53,61 +55,96 @@ fun RegisterScreen(navController: NavController) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 24.dp, top = 40.dp),
+                .padding(bottom = 8.dp, top = 40.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp) // kasih jarak antar field
         ) {
             Column(
                 modifier = Modifier.weight(1f)
-            ){
-            Text(
-                text = "First Name",
-                fontSize = 16.sp,
-                modifier = Modifier.padding( bottom = 8.dp)
-            )
-            OutlinedTextField(
-                value = firstName,
-                onValueChange = { firstName = it },
-                placeholder = { Text(text = "First Name") },
-                modifier = Modifier.fillMaxWidth() // isi ruang secara proporsional
-            )}
+            ) {
+                Text(
+                    text = "First Name",
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                OutlinedTextField(
+                    value = firstName,
+                    onValueChange = { firstName = it },
+                    placeholder = { Text(text = "First Name") },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedContainerColor = Color(0xBEFFFFFF),
+                    )
+                )
+            }
             Column(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
                     text = "Last Name",
                     fontSize = 16.sp,
-                    modifier = Modifier.padding( bottom = 8.dp)
+                    modifier = Modifier.padding(bottom = 8.dp)
                 )
-            OutlinedTextField(
-                value = lastName,
-                onValueChange = { lastName = it },
-                placeholder = { Text(text = "Last Name") },
-                modifier = Modifier.fillMaxWidth() // isi ruang secara proporsional
-            )
+                OutlinedTextField(
+                    value = lastName,
+                    onValueChange = { lastName = it },
+                    placeholder = { Text(text = "Last Name") },
+                    modifier = Modifier.fillMaxWidth(), // isi ruang secara proporsional
+                    shape = RoundedCornerShape(12.dp),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedContainerColor = Color(0xBEFFFFFF),
+                    )
+                )
             }
         }
 
-
+        Text(
+            text = "Username",
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
         // Username
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
             placeholder = { Text("username") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            singleLine = true,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color(0xBEFFFFFF),
+            )
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
+        Text(
+            text = "Email",
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
         // Email
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
             placeholder = { Text("example@gmail.com") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            singleLine = true,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color(0xBEFFFFFF),
+            )
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
+        Text(
+            text = "Password",
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
         // Password
         OutlinedTextField(
             value = password,
@@ -116,62 +153,40 @@ fun RegisterScreen(navController: NavController) {
             trailingIcon = {
 
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            singleLine = true,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color(0xBEFFFFFF)
+            )
         )
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        // Confirm Password
-        OutlinedTextField(
-            value = confirmPassword,
-            onValueChange = { confirmPassword = it },
-            placeholder = { Text("Confirm Password") },
-            trailingIcon = {
-
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
-
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Terms and conditions
-        val annotatedText = buildAnnotatedString {
-            append("Dengan mendaftar, Anda menyetujui ")
-            pushStringAnnotation("ketentuan", "https://example.com/terms")
-            withStyle(style = SpanStyle(color = Color.Blue)) {
-                append("Ketentuan Layanan")
-            }
-            pop()
-            append(" dan ")
-            pushStringAnnotation("privasi", "https://example.com/privacy")
-            withStyle(style = SpanStyle(color = Color.Blue)) {
-                append("Kebijakan privasi")
-            }
-            pop()
-            append(" ReservU")
-        }
 
         // Sign Up button
         Button(
             onClick = {
                 navController.navigate("login")
             },
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB5651D)),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
         ) {
-            Text("Sign Up", fontSize = 18.sp, color = Color.White)
+            Text("Register", fontSize = 18.sp, color = Color.White)
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         // Already have account
-        Row {
-            Text(text = "Already account ? ")
+        Row(
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = "Already account? ")
             Text(
                 text = "Log in",
-                color = Color.Black,
+                color = Color(0xFFB5651D),
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.clickable {
                     navController.navigate("login")
@@ -180,3 +195,4 @@ fun RegisterScreen(navController: NavController) {
         }
     }
 }
+
