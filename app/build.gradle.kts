@@ -64,6 +64,9 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.runtime)
+    implementation(libs.androidx.foundation.layout)
     debugImplementation("androidx.compose.ui:ui-tooling:1.9.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
 
