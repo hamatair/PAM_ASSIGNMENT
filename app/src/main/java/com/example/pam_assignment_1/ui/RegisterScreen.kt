@@ -13,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
@@ -23,6 +24,8 @@ import com.example.pam_assignment_1.R
 
 @Composable
 fun RegisterScreen(navController: NavController) {
+    var firstName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -31,28 +34,59 @@ fun RegisterScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 24.dp),
+            .padding(horizontal = 40.dp,vertical = 24.dp)
     ) {
         Text(
             text = "Sign Up",
-            fontSize = 24.sp,
+            fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.align(Alignment.Start)
+            fontFamily = FontFamily.Serif,
+            modifier = Modifier.align(Alignment.Start).padding(top = 80.dp)
         )
 
         Text(
-            text = "GerBraw",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
+            text = "Lets Create a New Account",
+            fontSize = 16.sp,
             modifier = Modifier.padding(top = 8.dp, bottom = 24.dp).align(Alignment.Start)
         )
 
-        Text(
-            text = "Create Account",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.padding(bottom = 16.dp)
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 24.dp, top = 40.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp) // kasih jarak antar field
+        ) {
+            Column(
+                modifier = Modifier.weight(1f)
+            ){
+            Text(
+                text = "First Name",
+                fontSize = 16.sp,
+                modifier = Modifier.padding( bottom = 8.dp)
+            )
+            OutlinedTextField(
+                value = firstName,
+                onValueChange = { firstName = it },
+                placeholder = { Text(text = "First Name") },
+                modifier = Modifier.fillMaxWidth() // isi ruang secara proporsional
+            )}
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = "Last Name",
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding( bottom = 8.dp)
+                )
+            OutlinedTextField(
+                value = lastName,
+                onValueChange = { lastName = it },
+                placeholder = { Text(text = "Last Name") },
+                modifier = Modifier.fillMaxWidth() // isi ruang secara proporsional
+            )
+            }
+        }
+
 
         // Username
         OutlinedTextField(
