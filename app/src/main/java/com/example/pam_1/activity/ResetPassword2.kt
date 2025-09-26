@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.pam_1.ui.theme.Poppins
 
 class ResetPassword2 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +43,7 @@ fun ResetPassword2Screen(navController: NavController) {
             text = "Create New Password",
             fontSize = 25.sp,
             fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif,
+            fontFamily = Poppins,
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(top = 80.dp)
@@ -51,13 +52,14 @@ fun ResetPassword2Screen(navController: NavController) {
         Text(
             text = "Lets create a new and more secure password",
             fontSize = 16.sp,
+            fontFamily = Poppins,
             modifier = Modifier
                 .padding(top = 8.dp, bottom = 24.dp)
                 .align(Alignment.Start)
         )
 
         // Password
-        Text(text = "Password", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Password", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins,)
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -67,7 +69,7 @@ fun ResetPassword2Screen(navController: NavController) {
             singleLine = true
         )
         // Password Repeat
-        Text(text = "Repeat Password", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Repeat Password", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins,)
         OutlinedTextField(
             value = passwordRepeat,
             onValueChange = { passwordRepeat = it },

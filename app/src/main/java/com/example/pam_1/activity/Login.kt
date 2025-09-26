@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.pam_1.ui.theme.Poppins
 
 class Login : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +45,7 @@ fun LoginScreen(navController: NavController) {
             text = "Login",
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif,
+            fontFamily = Poppins,
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(top = 80.dp)
@@ -53,6 +54,7 @@ fun LoginScreen(navController: NavController) {
         Text(
             text = "Enter your existing account",
             fontSize = 16.sp,
+            fontFamily = Poppins,
             modifier = Modifier
                 .padding(top = 8.dp, bottom = 24.dp)
                 .align(Alignment.Start)
@@ -60,7 +62,7 @@ fun LoginScreen(navController: NavController) {
 
 
         // Email
-        Text(text = "Email", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Email", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins,)
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -71,7 +73,7 @@ fun LoginScreen(navController: NavController) {
         )
 
         // Password
-        Text(text = "Password", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Password", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins,)
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -86,6 +88,7 @@ fun LoginScreen(navController: NavController) {
             fontSize = 16.sp,
             color = Color(0xFFB5651D),
             fontWeight = FontWeight.SemiBold,
+            fontFamily = Poppins,
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
@@ -109,7 +112,7 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxWidth()
                 .height(50.dp)
         ) {
-            Text("Login", fontSize = 18.sp, color = Color.White)
+            Text("Login", fontSize = 18.sp, color = Color.White, fontFamily = Poppins,)
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -119,11 +122,12 @@ fun LoginScreen(navController: NavController) {
             modifier = Modifier.align(Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Haven't any account? ")
+            Text(text = "Haven't any account? ", fontFamily = Poppins,)
             Text(
                 text = "Sign up",
                 color = Color(0xFFB5651D),
                 fontWeight = FontWeight.SemiBold,
+                fontFamily = Poppins,
                 modifier = Modifier.clickable {
                     navController.navigate("register")
                 }

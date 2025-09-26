@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.pam_1.ui.theme.Poppins
 
 class ResetPassword1 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +43,7 @@ fun ResetPassword1Screen(navController: NavController) {
             text = "Reset Password",
             fontSize = 25.sp,
             fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif,
+            fontFamily = Poppins,
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(top = 80.dp)
@@ -51,13 +52,14 @@ fun ResetPassword1Screen(navController: NavController) {
         Text(
             text = "Input your username and email address to receive reset link",
             fontSize = 16.sp,
+            fontFamily = Poppins,
             modifier = Modifier
                 .padding(top = 8.dp, bottom = 24.dp)
                 .align(Alignment.Start)
         )
 
         // Username
-        Text(text = "Username", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Username", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins,)
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
@@ -67,7 +69,7 @@ fun ResetPassword1Screen(navController: NavController) {
             singleLine = true
         )
         // Email
-        Text(text = "Email", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Email", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins,)
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
