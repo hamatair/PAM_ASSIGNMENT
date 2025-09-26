@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.pam_1.ui.theme.Poppins
 
 @Composable
 fun RegisterScreen(navController: NavController) {
@@ -30,8 +31,8 @@ fun RegisterScreen(navController: NavController) {
         Text(
             text = "Sign Up",
             fontSize = 40.sp,
+            fontFamily = Poppins,
             fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif,
             modifier = Modifier
                 .align(Alignment.Start)
                 .padding(top = 80.dp)
@@ -40,6 +41,8 @@ fun RegisterScreen(navController: NavController) {
         Text(
             text = "Lets Create a New Account",
             fontSize = 16.sp,
+            fontFamily = Poppins,
+            fontWeight = FontWeight.Medium,
             modifier = Modifier
                 .padding(top = 8.dp, bottom = 24.dp)
                 .align(Alignment.Start)
@@ -53,60 +56,100 @@ fun RegisterScreen(navController: NavController) {
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = "First Name", fontSize = 16.sp)
+                Text(text = "First Name", fontSize = 16.sp, fontFamily = Poppins, modifier = Modifier.padding(bottom = 8.dp))
                 OutlinedTextField(
                     value = firstName,
                     onValueChange = { firstName = it },
-                    placeholder = { Text("First Name") },
+                    placeholder = { Text("First Name",
+                        fontSize = 12.sp,
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.Medium) },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
-                    singleLine = true
+                    singleLine = true,
+                    colors = TextFieldDefaults.colors(
+                        unfocusedTextColor = Color.Black,
+//                    focusedLabelColor = Color.Transparent,
+                        unfocusedLabelColor = Color(0xFFB5651D)
+                    )
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = "Last Name", fontSize = 16.sp)
+                Text(text = "Last Name", fontSize = 16.sp, fontFamily = Poppins, modifier = Modifier.padding(bottom = 8.dp))
                 OutlinedTextField(
                     value = lastName,
                     onValueChange = { lastName = it },
-                    placeholder = { Text("Last Name") },
+                    placeholder = { Text("Last Name",
+                        fontSize = 12.sp,
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.Medium) },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
-                    singleLine = true
+                    singleLine = true,
+                    colors = TextFieldDefaults.colors(
+                        unfocusedTextColor = Color.Black,
+//                    focusedLabelColor = Color.Transparent,
+                        unfocusedLabelColor = Color(0xFFB5651D)
+                    )
                 )
             }
         }
 
         // Username
-        Text(text = "Username", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Username", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins)
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
-            placeholder = { Text("username") },
+            placeholder = { Text("username",
+                fontSize = 12.sp,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Medium) },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
-            singleLine = true
+            singleLine = true,
+            colors = TextFieldDefaults.colors(
+                unfocusedTextColor = Color.Black,
+//                    focusedLabelColor = Color.Transparent,
+                unfocusedLabelColor = Color(0xFFB5651D)
+        )
         )
 
         // Email
-        Text(text = "Email", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Email", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins)
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            placeholder = { Text("example@gmail.com") },
+            placeholder = { Text("example@gmail.com",
+                fontSize = 12.sp,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Medium) },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
-            singleLine = true
+            singleLine = true,
+            colors = TextFieldDefaults.colors(
+                unfocusedTextColor = Color.Black,
+//                    focusedLabelColor = Color.Transparent,
+                unfocusedLabelColor = Color(0xFFB5651D)
+        )
         )
 
         // Password
-        Text(text = "Password", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Password", fontSize = 16.sp, modifier = Modifier.padding(top = 8.dp), fontFamily = Poppins)
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            placeholder = { Text("Password") },
+            placeholder = { Text("Password",
+                fontSize = 12.sp,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Medium) },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
-            singleLine = true
+            singleLine = true,
+            colors = TextFieldDefaults.colors(
+                    unfocusedTextColor = Color.Black,
+//                    focusedLabelColor = Color.Transparent,
+                    unfocusedLabelColor = Color(0xFFB5651D)
+            )
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -123,7 +166,7 @@ fun RegisterScreen(navController: NavController) {
                 .fillMaxWidth()
                 .height(50.dp)
         ) {
-            Text("Register", fontSize = 18.sp, color = Color.White)
+            Text("Register", fontSize = 18.sp, color = Color.White, fontFamily = Poppins, fontWeight = FontWeight.Medium)
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -133,9 +176,14 @@ fun RegisterScreen(navController: NavController) {
             modifier = Modifier.align(Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Already account? ")
+            Text(text = "Already have an account? ",
+                fontSize = 12.sp,
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Medium)
             Text(
-                text = "Log in",
+                text = "Sign in",
+                fontSize = 12.sp,
+                fontFamily = Poppins,
                 color = Color(0xFFB5651D),
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.clickable {

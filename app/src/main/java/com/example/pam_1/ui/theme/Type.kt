@@ -20,8 +20,8 @@ val Poppins = FontFamily(
 val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = Poppins, // <-- SEBAIKNYA LANGSUNG GUNAKAN Poppins DI SINI
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     )

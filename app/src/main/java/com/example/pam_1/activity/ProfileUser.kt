@@ -35,7 +35,7 @@ fun ProfileUser(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp),
+            .padding(24.dp, 50.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Icon profil
@@ -78,84 +78,63 @@ fun ProfileUser(
 //        )
         Spacer(modifier = Modifier.height(8.dp))
         // Tampilkan data user
-        Row {
-            OutlinedTextField(
-                value = firstName,
-                onValueChange = {},
-                label = { Text("First Name",
-                    fontSize = 12.sp,
-                    fontFamily = Poppins,
-                    fontWeight = FontWeight.Medium)
-
-                        },
-                readOnly = true,
-                modifier = Modifier.width(166.dp),
-                shape = RoundedCornerShape(10.dp),
-                colors = TextFieldDefaults.colors(
-//                    focusedContainerColor = Color.Transparent,
-//                    unfocusedContainerColor = Color.Transparent,
-//                    disabledContainerColor = Color.Transparent,
-
-                    focusedTextColor = Color((0xFFB5651D)),
-                    unfocusedTextColor = Color.Black,
-                    focusedLabelColor = Color.Transparent,
-                    unfocusedLabelColor = Color((0xFFB5651D))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "First Name", fontSize = 16.sp, fontFamily = Poppins, fontWeight = FontWeight.Medium)
+                OutlinedTextField(
+                    value = firstName,
+                    onValueChange = {},
+                    readOnly = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(10.dp),
+                    singleLine = true,
+                    colors = TextFieldDefaults.colors(
+                        unfocusedTextColor = Color.Black,
+                        unfocusedLabelColor = Color((0xFFB5651D))
+                    )
+                    
                 )
-            )
-            Spacer(modifier = Modifier.width(10.dp))
-
-            OutlinedTextField(
-                value = lastName,
-                onValueChange = {},
-                label = { Text("Last Name",
-                    fontSize = 12.sp,
-                    fontFamily = Poppins,
-                    fontWeight = FontWeight.Medium)
-                        },
-                readOnly = true,
-                modifier = Modifier.width(166.dp),
-                shape = RoundedCornerShape(10.dp),
-                colors = TextFieldDefaults.colors(
-//                    focusedContainerColor = Color.Transparent,
-//                    unfocusedContainerColor = Color.Transparent,
-//                    disabledContainerColor = Color.Transparent,
-
-                    focusedTextColor = Color((0xFFB5651D)),
-                    unfocusedTextColor = Color.Black,
-                    focusedLabelColor = Color.Transparent,
-                    unfocusedLabelColor = Color((0xFFB5651D))
-
+            }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "Last Name", fontSize = 16.sp, fontFamily = Poppins, fontWeight = FontWeight.Medium)
+                OutlinedTextField(
+                    value = lastName,
+                    onValueChange = {},
+                    readOnly = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(10.dp),
+                    singleLine = true,
+                    colors = TextFieldDefaults.colors(
+                        unfocusedTextColor = Color.Black,
+                        unfocusedLabelColor = Color((0xFFB5651D))
                 )
-            )
+                )
+            }
         }
+
         Spacer(modifier = Modifier.height(8.dp))
 
-
+        Text(text = "Email", fontSize = 16.sp, fontFamily = Poppins, fontWeight = FontWeight.Medium, modifier = Modifier.align(Alignment.Start))
         OutlinedTextField(
             value = email,
             onValueChange = {},
-            label = { Text("Email",
-                        fontSize = 12.sp,
-                        fontFamily = Poppins,
-                        fontWeight = FontWeight.Medium)
-                    },
             readOnly = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(10.dp),
+            singleLine = true,
             colors = TextFieldDefaults.colors(
-//                    focusedContainerColor = Color.Transparent,
-//                    unfocusedContainerColor = Color.Transparent,
-//                    disabledContainerColor = Color.Transparent,
-
-                focusedTextColor = Color((0xFFB5651D)),
                 unfocusedTextColor = Color.Black,
-                focusedLabelColor = Color.Transparent,
                 unfocusedLabelColor = Color((0xFFB5651D))
             )
         )
 
-        Spacer(modifier = Modifier.height(425.dp))
+
+        Spacer(modifier = Modifier.height(350.dp))
 
         // Tombol Logout
         Button(
@@ -169,7 +148,7 @@ fun ProfileUser(
         ) {
             Text("Logout",
                 color = Color.White,
-                fontSize = 20.sp,
+                fontSize = 16.sp,
                 fontFamily = Poppins,
                 fontWeight = FontWeight.Medium
             )
